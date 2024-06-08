@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://5ysbxv63hxgk"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_ndwd4"]
+[ext_resource type="AudioStream" uid="uid://phldwxi48x1q" path="res://assets/music/title.ogg" id="2_tdhva"]
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_ndwd4")
+
+[node name="TitleLabel" type="Label" parent="."]
+offset_left = 1.0
+offset_top = 232.0
+offset_right = 1154.0
+offset_bottom = 271.0
+theme_type_variation = &"HeaderLarge"
+text = "Devil Boy"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="."]
+offset_left = 448.0
+offset_top = 584.0
+offset_right = 704.0
+offset_bottom = 633.0
+text = "Sprites by Kenney
+Music by Ted Kerr"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="VFlowContainer" parent="."]
+offset_left = 528.0
+offset_top = 320.0
+offset_right = 616.0
+offset_bottom = 496.0
+
+[node name="StartButton" type="Button" parent="Options"]
+layout_mode = 2
+text = "Start"
+
+[node name="FullScreenButton" type="Button" parent="Options"]
+layout_mode = 2
+text = "FullScreen"
+
+[node name="QuitButton" type="Button" parent="Options"]
+layout_mode = 2
+text = "Quit"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_tdhva")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="Options/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Options/FullScreenButton" to="." method="_on_full_screen_button_pressed"]
+[connection signal="pressed" from="Options/QuitButton" to="." method="_on_quit_button_pressed"]

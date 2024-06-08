@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://hqvmv7awxsak"]
+
+[ext_resource type="PackedScene" uid="uid://c8dtd0xjsme3" path="res://scenes/killzone.tscn" id="1_bddko"]
+[ext_resource type="Texture2D" uid="uid://fhl8sxks2uto" path="res://assets/sprites/monochrome_tilemap_transparent.png" id="2_lwvgn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_msvqw"]
+size = Vector2(16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qcdpa"]
+atlas = ExtResource("2_lwvgn")
+region = Rect2(34, 102, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_01yvo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qcdpa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Spike" type="Node2D"]
+
+[node name="Killzone" parent="." instance=ExtResource("1_bddko")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_msvqw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_01yvo")
